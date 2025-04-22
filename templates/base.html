@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir ="ltr">
+    <head>
+        <meta charset ="utf-8">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZN1CpRc3fC2fLhzPzOr+zUUHfVr2qX+7E=" crossorigin="anonymous"></script>
+<!-- Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-swr+VsFHTvlAZb7MllPgt+qG6U0vAL3EY5FQ3x6yKjKUPK7G3k2+Fq5RBpi9pJwL" crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-eMNCOeZt10zV+jFe0xuhuzskqPUKTDMyZ+R7YJAjknInxPqjzYffA+rW5rBwpn0u" crossorigin="anonymous"></script>
+
+        <title>{% block title_block %} Blog {% endblock %} </title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}">Home</a>
+              </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'App_Login:logout' %}">Logout</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'App_Login:profile' %}">Your Profile</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'App_Login:signup' %}">Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'App_Login:login' %}">Login</a>
+              </li>
+              {% endif %}
+            </ul>
+          </nav>
+
+        <div class ='container' style="padding-top:20px">
+        {% block body_block %}
+
+
+        {% endblock %}
+        </div>
+
+        
+          
+
+    </body>
+</html>
